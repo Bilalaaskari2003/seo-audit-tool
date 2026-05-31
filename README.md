@@ -16,10 +16,10 @@
 
 ## 📌 Overview
 
-SEO Audit Tool ek full-stack application hai jo kisi bhi website ka **real-time SEO audit** karta hai.
-Yeh tool website ko actually crawl karta hai, HTML parse karta hai aur 9 categories mein 80+ checks run karta hai.
+SEO Audit Tool is a full-stack application that performs **real-time SEO audits** on any website.
+It actually crawls the website, parses the HTML, and runs 80+ checks across 9 categories.
 
-**Koi paid API key ki zaroorat nahi** — sab kuch free aur local hai.
+**No paid API key required** — everything is free and runs locally.
 
 ---
 
@@ -33,9 +33,9 @@ Yeh tool website ko actually crawl karta hai, HTML parse karta hai aur 9 categor
 - ✅ **Quick Wins** — auto-fixable issues highlighted separately
 - ✅ **Issue Accordion** — click any issue to see description, recommendation, current/expected values
 - ✅ **Severity Filters** — filter by Critical / Warning / Info / Pass
-- ✅ **Auto-Fix Support** — WordPress REST API se automatic fixes apply karo
-- ✅ **Export** — JSON aur CSV download
-- ✅ **Zero API Cost** — koi Anthropic, OpenAI ya koi bhi paid service nahi
+- ✅ **Auto-Fix Support** — automatically apply fixes via WordPress REST API
+- ✅ **Export** — download reports as JSON or CSV
+- ✅ **Zero API Cost** — no Anthropic, OpenAI, or any paid service required
 
 ---
 
@@ -77,26 +77,26 @@ seo-audit-tool/
 ### Step 1 — Backend Setup
 
 ```bash
-# Backend folder mein jao
+# Navigate to the backend folder
 cd backend
 
-# Virtual environment banao (recommended)
+# Create a virtual environment (recommended)
 python -m venv venv
 
-# Virtual environment activate karo
+# Activate the virtual environment
 # Windows:
 venv\Scripts\activate
 # Mac/Linux:
 source venv/bin/activate
 
-# Dependencies install karo
+# Install dependencies
 pip install -r requirements.txt
 
-# Server start karo
+# Start the server
 uvicorn main:app --reload --port 8000
 ```
 
-✅ Backend ready: `http://localhost:8000`
+✅ Backend running at: `http://localhost:8000`
 📄 API Docs: `http://localhost:8000/docs`
 
 ---
@@ -104,26 +104,26 @@ uvicorn main:app --reload --port 8000
 ### Step 2 — Frontend Setup
 
 ```bash
-# Naya terminal kholo, frontend folder mein jao
+# Open a new terminal and navigate to the frontend folder
 cd frontend
 
-# Dependencies install karo (sirf pehli baar)
+# Install dependencies (first time only)
 npm install
 
-# App start karo
+# Start the app
 npm start
 ```
 
-✅ Frontend ready: `http://localhost:3000`
+✅ Frontend running at: `http://localhost:3000`
 
 ---
 
-### Step 3 — Use Karo
+### Step 3 — Run an Audit
 
-1. Browser mein `http://localhost:3000` kholo
-2. Koi bhi website URL daalo (e.g. `https://github.com`)
-3. **Audit** button dabao
-4. Results dekho 🎉
+1. Open `http://localhost:3000` in your browser
+2. Enter any website URL (e.g. `https://github.com`)
+3. Click the **Audit** button
+4. View your results 🎉
 
 ---
 
@@ -131,12 +131,12 @@ npm start
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `POST` | `/api/audit` | Naya audit start karo |
-| `GET` | `/api/audit/{id}` | Audit status / full report lo |
-| `GET` | `/api/progress/{id}` | Live progress percentage |
-| `POST` | `/api/auto-fix/{issue_id}` | Auto-fix apply karo (WP credentials chahiye) |
-| `GET` | `/api/export/{id}?format=json` | JSON report download |
-| `GET` | `/api/export/{id}?format=csv` | CSV report download |
+| `POST` | `/api/audit` | Start a new audit |
+| `GET` | `/api/audit/{id}` | Get audit status / full report |
+| `GET` | `/api/progress/{id}` | Get live progress percentage |
+| `POST` | `/api/auto-fix/{issue_id}` | Apply an auto-fix (WP credentials required) |
+| `GET` | `/api/export/{id}?format=json` | Download JSON report |
+| `GET` | `/api/export/{id}?format=csv` | Download CSV report |
 | `WS` | `/ws/audit-progress` | WebSocket real-time progress |
 | `GET` | `/docs` | Swagger UI (interactive API docs) |
 | `GET` | `/redoc` | ReDoc API documentation |
@@ -146,11 +146,11 @@ npm start
 ## 📊 SEO Checks — 80+ Total
 
 ### 🔧 Technical (20%)
-- HTTPS enabled check
-- robots.txt accessible aur valid
-- XML Sitemap mojood hai
+- HTTPS enabled
+- robots.txt accessible and valid
+- XML Sitemap present
 - Schema.org / JSON-LD structured data
-- URL structure aur length
+- URL structure and length
 - Render-blocking JavaScript in `<head>`
 - Query parameters in URL
 
@@ -168,8 +168,8 @@ npm start
 - Gzip/Brotli compression
 - Cache-Control headers
 - HTML page size
-- CSS files count
-- JavaScript files count
+- CSS file count
+- JavaScript file count
 - Render-blocking resources
 
 ### 📝 Content (14%)
@@ -178,13 +178,13 @@ npm start
 - Content/HTML ratio
 
 ### 🖼️ Images (10%)
-- Alt text missing
+- Missing alt text
 - `loading="lazy"` attribute
 - Width/Height dimensions
-- Image count
+- Total image count
 
 ### 📰 Headings (8%)
-- H1 presence aur count
+- H1 presence and count
 - H1 quality (length)
 - Heading hierarchy (H1→H2→H3)
 - Empty heading tags
@@ -213,18 +213,18 @@ npm start
 
 ## 🔧 Auto-Fix Feature (WordPress)
 
-Agar aapke paas WordPress site hai toh **auto-fix** feature se issues automatically fix ho sakte hain.
+If you have a WordPress site, the **auto-fix** feature can automatically resolve issues.
 
 ### Setup
 
-1. WordPress Admin panel mein jao
-2. **Users → Your Profile → Application Passwords**
-3. "Add New Application Password" — naam daalo (e.g. "SEO Tool") → Generate
-4. Generated password copy karo
+1. Go to your WordPress Admin panel
+2. Navigate to **Users → Your Profile → Application Passwords**
+3. Click "Add New Application Password" — enter a name (e.g. "SEO Tool") → Generate
+4. Copy the generated password
 
-### Audit Tool Mein Credentials Daalo
+### Enter Credentials in the Audit Tool
 
-Input screen pe **"Admin access"** section expand karo:
+Expand the **"Admin access"** section on the input screen:
 
 ```
 WP REST API URL:   https://yoursite.com/wp-json
@@ -232,24 +232,24 @@ Username:          your-wp-username
 Password:          xxxx xxxx xxxx xxxx xxxx
 ```
 
-### Auto-Fix Hone Wale Issues
+### Supported Auto-Fixes
 
-| Issue | Fix |
-|-------|-----|
-| Missing title tag | Post title via WP REST API |
-| Missing meta description | Yoast/RankMath API se inject |
-| Missing viewport tag | functions.php mein add |
-| Missing canonical tag | SEO plugin se set |
-| Images lazy loading | Content filter se `loading="lazy"` |
-| Missing schema markup | JSON-LD block inject |
-| Render-blocking JS | `async` attribute add |
-| Missing OG image | Featured image se set |
+| Issue | What it does |
+|-------|-------------|
+| Missing title tag | Sets post title via WP REST API |
+| Missing meta description | Injects via Yoast/RankMath API |
+| Missing viewport tag | Adds to functions.php |
+| Missing canonical tag | Sets via SEO plugin |
+| Images missing lazy loading | Adds `loading="lazy"` via content filter |
+| Missing schema markup | Injects JSON-LD block |
+| Render-blocking JS | Adds `async` attribute to scripts |
+| Missing OG image | Sets featured image as OG image |
 
 ---
 
 ## 🌐 Custom Backend URL
 
-Agar backend alag host/port pe ho toh frontend mein `.env` file banao:
+If your backend runs on a different host or port, create a `.env` file in the frontend folder:
 
 ```bash
 # frontend/.env
@@ -261,17 +261,17 @@ REACT_APP_API_URL=http://192.168.1.100:8000
 ## 🛠️ Tech Stack
 
 ### Frontend
-| Library | Use |
-|---------|-----|
+| Library | Purpose |
+|---------|---------|
 | React 18 | UI framework |
 | Recharts | Bar chart + Radar chart |
 | Lucide React | Icons |
 | Tailwind CSS | Utility styling |
 
 ### Backend
-| Library | Use |
-|---------|-----|
-| FastAPI | REST API + WebSocket |
+| Library | Purpose |
+|---------|---------|
+| FastAPI | REST API + WebSocket server |
 | httpx | Async HTTP requests (website crawling) |
 | BeautifulSoup4 | HTML parsing |
 | lxml | Fast HTML parser |
@@ -282,33 +282,33 @@ REACT_APP_API_URL=http://192.168.1.100:8000
 
 ## ❓ Troubleshooting
 
-### Backend start nahi ho raha
+### Backend won't start
 ```bash
-# Python version check karo
-python --version   # 3.10+ chahiye
+# Check Python version
+python --version   # needs 3.10+
 
-# Dependencies dobara install karo
+# Reinstall dependencies
 pip install -r requirements.txt --upgrade
 ```
 
-### Frontend CORS error aa raha hai
+### Frontend CORS error
 ```
-Backend zaroor chal raha ho port 8000 pe
+Make sure the backend is running on port 8000
 uvicorn main:app --reload --port 8000
 ```
 
-### `npm start` kaam nahi kar raha
+### `npm start` not working
 ```bash
-# node_modules delete karo aur dobara install karo
-rm -rf node_modules
+# Delete node_modules and reinstall
+rmdir /s /q node_modules   # Windows
 npm install
 npm start
 ```
 
-### Audit "Failed" dikha raha hai
-- Check karo backend terminal mein error message
-- URL sahi hai? (`https://` se shuru hona chahiye)
-- Website publicly accessible hai?
+### Audit shows "Failed"
+- Check the backend terminal for error details
+- Is the URL correct? (must start with `https://`)
+- Is the website publicly accessible?
 
 ---
 
@@ -327,12 +327,12 @@ Links       ×  7%
 Security    ×  4%
 Social      ×  2%
 
-Per category:
-  Start: 100
-  Critical issue: -18 points
-  Warning issue:  -7  points
-  Info issue:     -2  points
-  Pass:            0  points (minimum: 0)
+Per category score:
+  Starting score : 100
+  Critical issue : -18 points
+  Warning issue  :  -7 points
+  Info issue     :  -2 points
+  Pass           :   0 points  (minimum score: 0)
 ```
 
 | Score | Rating |
@@ -346,12 +346,12 @@ Per category:
 
 ## 📄 License
 
-MIT License — free hai, use karo, modify karo, share karo.
+MIT License — free to use, modify, and share.
 
 ---
 
 <div align="center">
 
-**Made with ❤️ — No API keys, No subscriptions, Just results.**
+**Made with ❤️ — No API keys. No subscriptions. Just results.**
 
 </div>
